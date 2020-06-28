@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>To Do List</title>
+
+    </script>
+</head>
+
+<body class='grey lighten-3'>
+    <!-- NAVBAR -->
+    <nav class="z-depth-0 grey lighten-4">
+        <div class="navbar">
+            <div id="NavbuttonContainer">
+                <button id="navButton"> 
+                    <img src="Images/menu.svg">
+                </button>
+            </div>
+
+            <div id="logo">
+
+                <a href="#" class="brand-logo">
+                    <text style="color:black;"> To Do List</text>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+
+    <div id='mainWrapper'>
+
+        <div id="menuContainer">
+            <ul id="catogories">
+                <li id='allTasks' class="selectedCategory categoriesSelection">
+                    All Tasks
+                </li>
+
+                <!-- <li class="categoriesSelection">
+
+                    <p class='categoryName'>test test</p>
+
+
+                    <div class="editDeleteContainer">
+                        <button id="edit" class='editButton'> 
+                                 <img src="Images/edit.svg">
+                             </button>
+
+                        <button id="delete" class="deleteButton"> 
+                                 <img src='Images/delete.svg'>
+                             </button>
+
+                    </div>
+                </li> -->
+
+            </ul>
+
+            <button id="newCategory">
+                <p> 
+                    <img src="Images/plus.svg">
+                    New Category
+                </p>
+            </button>
+
+
+            <form id="NewCategoryForm" class="hidden">
+                <input id="newCategoryInput" type="text" name="Category-name" placeHolder="Category Name" required>
+                <div id="addCategoryButtonContainer">
+                    <button id="addNewCategoryButton" class="save" disabled> 
+                        <img src="Images/add-24px.svg">
+                    </button>
+                    <button id="cancelNewCategoryButton" type="reset" class="cancel"> 
+                        <img src="Images/x.svg">
+                    </button>
+                </div>
+            </form>
+
+
+
+        </div>
+
+        <div id="contentContainer">
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="main.js"></script>
+
+
+</body>
+
+</html>

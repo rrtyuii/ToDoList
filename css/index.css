@@ -1,0 +1,346 @@
+.hidden {
+    display: none !important;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+}
+
+#LogInWarning {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    justify-items: mi;
+    text-align: center;
+    width: 400px;
+    align-items: center;
+    /* background: black; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+nav {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+#mainContainer {
+    /* margin-top: 65px; */
+    padding-left: 0;
+    height: 100%;
+    padding-right: 0;
+}
+
+.folderClass {
+    display: flex;
+    min-height: 2.6rem;
+    align-items: center;
+}
+
+.FolderIcon {
+    margin-right: 10px;
+}
+
+.FolderText {
+    margin-right: 10px;
+}
+
+#flexWrapper {
+    display: flex;
+    height: 100%;
+    /* margin-top: 65px; */
+    padding-top: 65px;
+}
+
+#listContainer {
+    width: 15%;
+    background: #fff;
+}
+
+#listForm {}
+
+#listOrder {
+    margin-left: 8%;
+    margin-top: 5%;
+}
+
+#NewList {
+    border-bottom: none;
+}
+
+.navbar {
+    display: flex;
+}
+
+#logo {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    /* align-items: center; */
+}
+
+#navButton {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    background-color: indianred;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+#loginUl {}
+
+#logInULContainer {
+    flex: 1;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+#NavbuttonContainer {
+    flex: 1;
+    padding-left: 30px;
+    justify-content: center;
+}
+
+#menuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    /* padding: 10px; */
+    padding: 0.5rem 2rem 1.5rem;
+    background: gainsboro;
+    /* justify-content: flex-start; */
+    width: 350px;
+    height: calc(100vh - 64px);
+    margin-top: 64px;
+    transition: 0.5s;
+}
+
+#newCategory {
+    color: #f3efe0;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    background-color: #565264;
+    padding: 6px;
+    border-radius: 5px;
+    padding: 0.4rem;
+    align-items: center;
+    border: none;
+    width: fit-content;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    transition: all .2s ease-in-out;
+}
+
+#newCategory p {
+    margin: 0 0.2rem 0 0;
+    color: var(--light-text-color);
+    display: flex;
+    /* width: fit-content; */
+}
+
+#newCategory:hover {
+    transform: scale(1.1);
+}
+
+#catogories {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.selectedCategory {
+    color: black !important;
+}
+
+.categoriesSelection {
+    color: #bfacaa;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.editButton {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    background-color: indianred;
+    padding: 6px;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.deleteButton {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    background-color: indianred;
+    padding: 6px;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+}
+
+.editDeleteContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: flex-end; */
+}
+
+.categoryName {
+    width: fit-content;
+    justify-content: right;
+}
+
+.categoryName:hover {
+    color: black !important;
+    cursor: pointer;
+}
+
+.editButton:hover {
+    transform: scale(1.1);
+}
+
+.deleteButton:hover {
+    transform: scale(1.1);
+}
+
+#NewCategoryForm {
+    display: flex;
+    ;
+    align-items: center;
+}
+
+#newCategoryInput {
+    border-radius: 5px;
+    border: none;
+    padding: 0.4rem 0.6rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    width: 168px;
+}
+
+.save {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    padding: 6px;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: all .2s ease-in-out;
+}
+
+.save:hover {
+    transform: scale(1.1);
+}
+
+.cancel {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    background-color: indianred;
+    padding: 6px;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+}
+
+.cancel:hover {
+    transform: scale(1.1);
+}
+
+button:disabled {
+    background-color: #bfacaa
+}
+
+img {
+    height: 16px;
+    width: 16px;
+}
+
+#newCategoryInput:focus {
+    outline: none;
+}
+
+#newCategoryInput {
+    background-color: white;
+    border: none;
+    outline: none;
+    padding-left: 10px !important;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+}
+
+#addCategoryButtonContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#contentContainer {
+    width: 100%;
+    height: 500px;
+    margin-top: 64px;
+    background-color: black;
+}
+
+#mainWrapper {
+    display: flex;
+}
+
+.marginleftSlide {
+    margin-left: 50px;
+}
+
+#underlayer {
+    width: 0px;
+    flex-shrink: 0;
+}
