@@ -38,29 +38,16 @@
 
 
     <div id='mainWrapper'>
+        <div id="overlay" class='hidden'>
 
+        </div>
         <div id="menuContainer">
             <ul id="catogories">
                 <li id='allTasks' class="selectedCategory categoriesSelection">
                     All Tasks
                 </li>
 
-                <!-- <li class="categoriesSelection">
 
-                    <p class='categoryName'>test test</p>
-
-
-                    <div class="editDeleteContainer">
-                        <button id="edit" class='editButton'> 
-                                 <img src="Images/edit.svg">
-                             </button>
-
-                        <button id="delete" class="deleteButton"> 
-                                 <img src='Images/delete.svg'>
-                             </button>
-
-                    </div>
-                </li> -->
 
             </ul>
 
@@ -72,16 +59,20 @@
             </button>
 
 
+
+
             <form id="NewCategoryForm" class="hidden">
+
                 <input id="newCategoryInput" type="text" name="Category-name" placeHolder="Category Name" required>
                 <div id="addCategoryButtonContainer">
-                    <button id="addNewCategoryButton" class="save" disabled> 
+                    <button id="addNewCategoryButton" type="reset" class="save" disabled> 
                         <img src="Images/add-24px.svg">
                     </button>
                     <button id="cancelNewCategoryButton" type="reset" class="cancel"> 
                         <img src="Images/x.svg">
                     </button>
                 </div>
+
             </form>
 
 
@@ -90,7 +81,93 @@
 
         <div id="contentContainer">
 
+            <ul id='taskList'>
+
+            </ul>
+            <button id="newTaskButton">
+                        <p> 
+                            <img src="Images/plus.svg">
+                            New Task
+                        </p>
+            </button>
+
+
+            <div id="newClassForm" class='hidden'>
+                <div id="TitleAndDescription">
+                    <span id="NewTaskTag">
+                        New Task
+                    </span>
+                    <input type="text" name="TaskName" id="TaskNameCreate" placeholder="Task Name" required>
+                    <input type="text" name="TaskDescription" id="TaskDescriptionCreate" placeholder="Task Description" required> </input>
+                </div>
+                <div id="CategoryDropDown">
+                    <span id="CategoryDropDownTag">
+                        Category
+                    </span>
+                    <select name="CategorySelect" class="dropDownCategory" id="CategorySelectForTask">
+
+
+                    </select>
+
+
+                </div>
+
+                <div id='PriorityForTask'>
+                    <span> 
+                        Priority    
+                        </span>
+
+                    <select name="TaskPrioritySelect" class="TaskPriorityDropDown" id="TaskPriorityDropDown">
+                            <option value="3"> 
+                                Low Priority
+                            </option> 
+                            <option value="2"> 
+                                    Medium Priority
+                                </option> 
+                                <option value="1"> 
+                                        High Priority
+                                    </option> 
+
+                    </select>
+
+                    <input type="date" name="dateDue" id="dateForTask" required>
+
+                </div>
+                <div id="createButtonContainer">
+                    <button id="CreateTaskButton" type="reset" class="save" disabled> 
+                                <img src="Images/add-24px.svg">
+                            </button>
+                    <button id="CancelCreateTask" type="reset" class="cancel"> 
+                                <img src="Images/x.svg">
+                            </button>
+                </div>
+
+
+            </div>
+
+
+
         </div>
+
+
+
+
+        <form id="EditCategoryForm" class="hidden">
+            <h2 id='editCategoryHeader'> Edit Category</h2>
+            <input type="text" name="cateogry-Name" id="editCategoryName" placeholder="Category Name" required>
+
+            <button id="EditCategoryButton" type="reset" class="save" disabled> 
+                    <img src="Images/add-24px.svg">
+                </button>
+            <button id="CancelEdit" type="reset" class="cancel"> 
+                    <img src="Images/x.svg">
+                </button>
+
+
+
+
+
+        </form>
 
 
 
@@ -111,7 +188,7 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 
     <script src="main.js"></script>
 
