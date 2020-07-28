@@ -275,11 +275,17 @@ const domManipulation = (() => {
 
         inputCheck.addEventListener('change', function() {
             if (inputCheck.checked) {
-                console.log('checkWorking');
-                arrayTask[i].completed == true;
-                localStorage.removeItem('Tasks');
-                localStorage.setItem('Tasks', JSON.stringify(arrayTask));
-                DeleteTask(li);
+                const arrayTask = categoryController.getTasks();
+                for (let i = 0; i < arrayTask.length; i++) {
+                    if (arrayTask[i].taskId == taskId) {
+                        arrayTask[i].completed = true;
+                        localStorage.removeItem('Tasks');
+                        localStorage.setItem('Tasks', JSON.stringify(arrayTask));
+                        DeleteTask(li);
+                    }
+                }
+
+
             }
 
         })
@@ -427,7 +433,7 @@ const domManipulation = (() => {
                 inputCheck.addEventListener('change', function() {
                     if (inputCheck.checked) {
                         console.log('checkWorking');
-                        arrayTask[i].completed == true;
+                        arrayTask[i].completed = true;
                         localStorage.removeItem('Tasks');
                         localStorage.setItem('Tasks', JSON.stringify(arrayTask));
                         DeleteTask(li);

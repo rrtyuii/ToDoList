@@ -83,11 +83,18 @@ const TaskFormController = (() => {
 
 
 
+    function resetTaskForm() {
+        document.querySelector('#TaskNameCreate').value = '';
+        document.querySelector('#TaskDescriptionCreate').value = '';
+        document.querySelector('#newClassForm').classList.add('hidden');
+
+    }
 
 
 
 
-    return { loadCategoriesIntoSelect, unLoadCategoriesSelect, validateNewTaskForm, getAllTaskValues }
+
+    return { resetTaskForm, loadCategoriesIntoSelect, unLoadCategoriesSelect, validateNewTaskForm, getAllTaskValues }
 
 })();
 

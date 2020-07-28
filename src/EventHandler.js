@@ -155,6 +155,9 @@ const EventHandler = (() => {
                 categoryController.CreateTask(A.TaskName, A.TaskCate, A.TaskDueDate, A.Description, A.TaskPriority, false);
                 domManipulation.CreateNewTask();
 
+
+                TaskFormController.resetTaskForm();
+
             }
 
 
