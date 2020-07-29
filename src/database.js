@@ -98,6 +98,30 @@ const categoryController = (() => {
 
                 localStorage.removeItem('Categories');
                 localStorage.setItem('Categories', JSON.stringify(deleteCate));
+
+
+                //delete all tasks with the cateogry set as the category getting deleted
+                let AllTaskArray = categoryController.getTasks();
+                let iOut = 0;
+                let newArray = []
+                for (let i = 0; i < AllTaskArray.length; i++) {
+                    if (AllTaskArray[i].CategoryName != name) {
+                        newArray[iOut] = AllTaskArray[i];
+                        iOut = iOut + 1;
+
+
+                    }
+
+                }
+
+                localStorage.removeItem('Tasks');
+                localStorage.setItem('Tasks', JSON.stringify(newArray));
+
+
+
+
+
+
                 return true;
             }
 

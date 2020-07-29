@@ -169,6 +169,7 @@ const EventHandler = (() => {
 
 
                 TaskFormController.resetTaskForm();
+                TaskFormController.unLoadCategoriesSelect();
 
             }
 

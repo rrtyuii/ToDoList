@@ -180,23 +180,14 @@ const domManipulation = (() => {
         DButton.addEventListener('click', function() {
             EventHandler.removeCategory(CategoryName, li);
 
-            let AllTaskArray = categoryController.getTasks();
 
-            let iOut = 0;
-            let newArray = []
-            for (let i = 0; i < AllTaskArray.length; i++) {
-                if (AllTaskArray[i].CategoryName != CategoryName) {
-                    newArray[iOut] = AllTaskArray[i];
-                    iOut = iOut + 1;
-                    AllTaskArray.length = iOut;
 
-                }
 
-            }
-
-            categoryController.EditTask(newArray);
             let ul = document.querySelector('#taskList');
+
             removeNode(ul);
+            loadAllTask();
+
 
 
 
@@ -543,9 +534,9 @@ const domManipulation = (() => {
 
     function removeNode(node) {
         while (node.firstChild) {
-            removeNode(node.firstChild);
+            node.removeChild(node.firstChild);
         }
-        removeNode(node);
+
     }
 
 
