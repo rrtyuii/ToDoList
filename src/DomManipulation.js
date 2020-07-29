@@ -18,12 +18,7 @@ const domManipulation = (() => {
     let categoryFormBox = document.querySelector("#newCategoryInput");
     let newTaskForm = document.querySelector('#newClassForm');
 
-    function removeNode(node) {
-        while (node.firstChild) {
-            removeNode(node.firstChild);
-        }
 
-    }
 
     function unHideNewTaskForm() {
         newTaskForm.classList.remove('hidden');
@@ -171,6 +166,8 @@ const domManipulation = (() => {
 
         EditButton.addEventListener('click', function() {
             EventHandler.EditCategory(CategoryName)
+
+
         });
 
 
@@ -182,6 +179,30 @@ const domManipulation = (() => {
         buttonContainer.appendChild(DButton);
         DButton.addEventListener('click', function() {
             EventHandler.removeCategory(CategoryName, li);
+
+            let AllTaskArray = categoryController.getTasks();
+
+            let iOut = 0;
+            let newArray = []
+            for (let i = 0; i < AllTaskArray.length; i++) {
+                if (AllTaskArray[i].CategoryName != CategoryName) {
+                    newArray[iOut] = AllTaskArray[i];
+                    iOut = iOut + 1;
+                    AllTaskArray.length = iOut;
+
+                }
+
+            }
+
+            categoryController.EditTask(newArray);
+            let ul = document.querySelector('#taskList');
+            removeNode(ul);
+
+
+
+
+
+
         });
 
         li.appendChild(para);
@@ -364,149 +385,150 @@ const domManipulation = (() => {
     function loadAllTask() {
 
         const arrayTask = categoryController.getTasks();
-        for (let i = 0; i < arrayTask.length; i++) {
-            if (arrayTask[i].completed == false) {
-                let taskId = arrayTask[i].taskId;
-                let ul = document.querySelector('#taskList');
+        if (arrayTask.length != 0) {
+            for (let i = 0; i < arrayTask.length; i++) {
+                if (arrayTask[i].completed == false) {
+                    let taskId = arrayTask[i].taskId;
+                    let ul = document.querySelector('#taskList');
 
-                let li = document.createElement('li');
-                li.classList.add('taskListLi');
-                let div1 = document.createElement('div');
-                div1.classList.add('topTask');
-                li.appendChild(div1);
-                let div2 = document.createElement('div');
-                div2.classList.add('topTaskLeftAlign');
-                div1.appendChild(div2);
-                let button1 = document.createElement('button');
-                button1.classList.add('expendButton');
-                button1.classList.add('vert');
-                button1.innerHTML = "<img src ='Images/chevron-down.svg'>";
-                //expend function
-                button1.addEventListener('click', function() {
-                    console.log('hit');
-                    let test = document.getElementById(taskId);
-                    if (test.classList.contains('hidden')) {
-                        test.classList.remove('hidden');
-                        button1.classList.add('vert')
-                    } else {
-                        test.classList.add('hidden');
-                        button1.classList.remove('vert')
-                    }
-                });
-
-
-                div2.appendChild(button1);
-
-                let div3 = document.createElement('div');
-                div3.classList.add('topTaskLeftAlignName');
-                div2.appendChild(div3);
-
-                let div4 = document.createElement('div');
-                div4.classList.add('topTaskName');
-
-                div4.innerHTML = `<span> ${arrayTask[i].taskName}</span>`;
-                div3.appendChild(div4);
-
-                let div5 = document.createElement('div');
-                div5.classList.add('topTaskDueDate');
-
-                div5.innerHTML = `<span> Due: ${arrayTask[i].dueDate}</span>`;
-
-                div3.appendChild(div5);
+                    let li = document.createElement('li');
+                    li.classList.add('taskListLi');
+                    let div1 = document.createElement('div');
+                    div1.classList.add('topTask');
+                    li.appendChild(div1);
+                    let div2 = document.createElement('div');
+                    div2.classList.add('topTaskLeftAlign');
+                    div1.appendChild(div2);
+                    let button1 = document.createElement('button');
+                    button1.classList.add('expendButton');
+                    button1.classList.add('vert');
+                    button1.innerHTML = "<img src ='Images/chevron-down.svg'>";
+                    //expend function
+                    button1.addEventListener('click', function() {
+                        console.log('hit');
+                        let test = document.getElementById(taskId);
+                        if (test.classList.contains('hidden')) {
+                            test.classList.remove('hidden');
+                            button1.classList.add('vert')
+                        } else {
+                            test.classList.add('hidden');
+                            button1.classList.remove('vert')
+                        }
+                    });
 
 
-                let div6 = document.createElement('div');
-                div6.classList.add('topTaskRightAlign');
+                    div2.appendChild(button1);
 
-                div1.appendChild(div6);
+                    let div3 = document.createElement('div');
+                    div3.classList.add('topTaskLeftAlignName');
+                    div2.appendChild(div3);
 
-                let inputCheck = document.createElement('input');
-                inputCheck.classList.add('taskCheckBox');
-                inputCheck.setAttribute('type', 'checkBox');
-                inputCheck.setAttribute('id', 'N' + taskId);
+                    let div4 = document.createElement('div');
+                    div4.classList.add('topTaskName');
 
-                let labelInput = document.createElement('label');
-                labelInput.setAttribute('for', 'N' + taskId);
-                div6.append(inputCheck);
-                div6.append(labelInput);
+                    div4.innerHTML = `<span> ${arrayTask[i].taskName}</span>`;
+                    div3.appendChild(div4);
 
-                inputCheck.addEventListener('change', function() {
-                    if (inputCheck.checked) {
-                        console.log('checkWorking');
-                        arrayTask[i].completed = true;
-                        localStorage.removeItem('Tasks');
-                        localStorage.setItem('Tasks', JSON.stringify(arrayTask));
-                        DeleteTask(li);
-                    }
+                    let div5 = document.createElement('div');
+                    div5.classList.add('topTaskDueDate');
 
-                })
+                    div5.innerHTML = `<span> Due: ${arrayTask[i].dueDate}</span>`;
 
-                let div7 = document.createElement('div');
-                div7.classList.add('bottomTask');
-                div7.setAttribute('id', taskId);
-                li.appendChild(div7);
+                    div3.appendChild(div5);
 
 
-                let div8 = document.createElement('div');
-                div8.classList.add('taskDescription');
+                    let div6 = document.createElement('div');
+                    div6.classList.add('topTaskRightAlign');
 
-                div7.appendChild(div8);
+                    div1.appendChild(div6);
 
-                div8.innerHTML = `<span> ${arrayTask[i].description}</span>`
+                    let inputCheck = document.createElement('input');
+                    inputCheck.classList.add('taskCheckBox');
+                    inputCheck.setAttribute('type', 'checkBox');
+                    inputCheck.setAttribute('id', 'N' + taskId);
 
+                    let labelInput = document.createElement('label');
+                    labelInput.setAttribute('for', 'N' + taskId);
+                    div6.append(inputCheck);
+                    div6.append(labelInput);
 
-                let div9 = document.createElement('div');
+                    inputCheck.addEventListener('change', function() {
+                        if (inputCheck.checked) {
+                            console.log('checkWorking');
+                            arrayTask[i].completed = true;
+                            localStorage.removeItem('Tasks');
+                            localStorage.setItem('Tasks', JSON.stringify(arrayTask));
+                            DeleteTask(li);
+                        }
 
-                div9.classList.add('taskCategory');
+                    })
 
-                div9.innerHTML = `${arrayTask[i].CategoryName}`;
-
-                div7.appendChild(div9);
-
-
-                let div10 = document.createElement('div');
-                div10.classList.add('editDeleteButton');
-
-                div7.appendChild(div10);
-
-
-
-                let div11 = document.createElement('div');
-                div11.classList.add('editTaskButton');
-                div10.appendChild(div11);
-
-                let button2 = document.createElement('button');
-                button2.classList.add('editController');
-                button2.innerHTML = `Edit Task`;
-                div11.appendChild(button2);
-
-                //edit
-                button2.addEventListener('click', function() {
+                    let div7 = document.createElement('div');
+                    div7.classList.add('bottomTask');
+                    div7.setAttribute('id', taskId);
+                    li.appendChild(div7);
 
 
-                })
+                    let div8 = document.createElement('div');
+                    div8.classList.add('taskDescription');
+
+                    div7.appendChild(div8);
+
+                    div8.innerHTML = `<span> ${arrayTask[i].description}</span>`
 
 
-                let div12 = document.createElement('div');
-                div12.classList.add('deleteTaskButton');
-                div10.appendChild(div12);
-                let button3 = document.createElement('button');
-                button3.classList.add('deleteController');
+                    let div9 = document.createElement('div');
 
-                button3.innerHTML = `Delete Task`;
-                div12.appendChild(button3);
-                button2.addEventListener('click', function() {
+                    div9.classList.add('taskCategory');
+
+                    div9.innerHTML = `${arrayTask[i].CategoryName}`;
+
+                    div7.appendChild(div9);
 
 
-                })
+                    let div10 = document.createElement('div');
+                    div10.classList.add('editDeleteButton');
+
+                    div7.appendChild(div10);
 
 
-                ul.appendChild(li);
+
+                    let div11 = document.createElement('div');
+                    div11.classList.add('editTaskButton');
+                    div10.appendChild(div11);
+
+                    let button2 = document.createElement('button');
+                    button2.classList.add('editController');
+                    button2.innerHTML = `Edit Task`;
+                    div11.appendChild(button2);
+
+                    //edit
+                    button2.addEventListener('click', function() {
+
+
+                    })
+
+
+                    let div12 = document.createElement('div');
+                    div12.classList.add('deleteTaskButton');
+                    div10.appendChild(div12);
+                    let button3 = document.createElement('button');
+                    button3.classList.add('deleteController');
+
+                    button3.innerHTML = `Delete Task`;
+                    div12.appendChild(button3);
+                    button2.addEventListener('click', function() {
+
+
+                    })
+
+
+                    ul.appendChild(li);
+                }
+
             }
 
         }
-
-
 
 
 
@@ -519,6 +541,12 @@ const domManipulation = (() => {
 
 
 
+    function removeNode(node) {
+        while (node.firstChild) {
+            removeNode(node.firstChild);
+        }
+        removeNode(node);
+    }
 
 
 
@@ -529,8 +557,7 @@ const domManipulation = (() => {
 
 
 
-
-    return { loadAllTask, CreateNewTask, unHideNewTaskForm, hideNewTaskForm, ClickCategory, toggleMenu, menu, menuButton, removeNode, addMenuItems, toggleCategoryForm, CategoryFormButton, cancelNewCategoryButton, DeleteCategory, updateNewCategory, addCategorybutton, categoryFormBox }
+    return { removeNode, loadAllTask, CreateNewTask, unHideNewTaskForm, hideNewTaskForm, ClickCategory, toggleMenu, menu, menuButton, removeNode, addMenuItems, toggleCategoryForm, CategoryFormButton, cancelNewCategoryButton, DeleteCategory, updateNewCategory, addCategorybutton, categoryFormBox }
 
 })();
 

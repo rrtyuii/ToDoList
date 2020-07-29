@@ -3,6 +3,8 @@ import { categoryController } from './database'
 import { TaskFormController } from './FormController'
 const EventHandler = (() => {
 
+    let onClickAdded = false;
+
     function menuButtonToggle() {
         domManipulation.menuButton.addEventListener('click', () => {
             console.log('working');
@@ -99,8 +101,10 @@ const EventHandler = (() => {
         newTaskButton.addEventListener('click', function() {
             TaskFormController.loadCategoriesIntoSelect();
             domManipulation.unHideNewTaskForm();
-            onCreateTask()
 
+            if (onClickAdded == false) {
+                onCreateTask()
+            }
         })
 
     }
@@ -137,16 +141,24 @@ const EventHandler = (() => {
         }
     }
 
+    // function removeAll() {
+    //     document.querySelector('#REMOVEALL').addEventListener('click', function() {
 
+    //         let testnode = document.querySelector('#taskList');
+    //         domManipulation.removeNode(testnode);
+
+    //     })
+
+    // }
 
 
 
 
     function onCreateTask() {
-        let createTaskButton = document.querySelector('#CreateTaskButton');
+        const createTaskButton = document.querySelector('#CreateTaskButton');
         console.log(createTaskButton);
         handleSubmitForNewTask();
-
+        onClickAdded = true;
 
         createTaskButton.addEventListener('click', function() {
                 console.log('test');

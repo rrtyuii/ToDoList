@@ -19,6 +19,7 @@ import { EventHandler } from './EventHandler'
         EventHandler.onNewTaskClick();
         EventHandler.onCancelNewTask();
 
+
     } catch (error) {
         EventHandler.menuButtonToggle();
         domManipulation.loadAllTask();
@@ -28,6 +29,7 @@ import { EventHandler } from './EventHandler'
         EventHandler.AllTaskClick();
         EventHandler.onNewTaskClick();
         EventHandler.onCancelNewTask();
+
 
     }
 }());

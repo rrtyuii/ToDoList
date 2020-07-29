@@ -123,11 +123,15 @@ const categoryController = (() => {
 
     }
 
+    function EditTask(newArray) {
+
+        localStorage.removeItem('Tasks');
+        localStorage.setItem('Tasks', JSON.stringify(newArray));
+    }
 
 
 
-
-    return { getCategories, getTasks, CreateCategory, DeleteCategory, EditCategory, CreateTask }
+    return { getCategories, getTasks, CreateCategory, DeleteCategory, EditCategory, CreateTask, EditTask }
 
 
 
