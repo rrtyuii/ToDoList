@@ -77,7 +77,9 @@ const EventHandler = (() => {
         let allTask = document.querySelector('#allTasks');
         allTask.addEventListener('click', function() {
             domManipulation.ClickCategory(allTask, 'AllTasks');
-
+            let ul = document.querySelector('#taskList');
+            domManipulation.removeNode(ul);
+            domManipulation.loadAllTask();
         })
     }
 
