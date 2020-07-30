@@ -272,7 +272,6 @@ ul {
 
 #NewCategoryForm {
     display: flex;
-    ;
     align-items: center;
 }
 
@@ -684,4 +683,50 @@ select {
 
 .expendButton:hover {
     cursor: pointer;
+}
+
+.CategoryForm {
+    display: flex;
+    align-items: center;
+}
+
+.addCategoryButtonContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.NewCategoryForm {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.EditcategoryButton {
+    margin-right: 10px;
+}
+
+.input {
+    border-radius: 5px !important;
+    border: none !important;
+    padding: 0.4rem 0.6rem !important;
+    font-family: inherit !important;
+    font-size: 0.9rem !important;
+    width: 168px !important;
+}
+
+.input:focus {
+    outline: none !important;
+}
+
+.input {
+    background-color: white !important;
+    border: none !important;
+    outline: none !important;
+    padding-left: 10px !important;
+    height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-box-shadow: none !important;
 }
