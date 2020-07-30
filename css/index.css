@@ -459,6 +459,16 @@ img {
     flex-direction: column;
 }
 
+.taskListLiMed {
+    display: flex;
+    flex-direction: column;
+}
+
+.taskListLiHigh {
+    display: flex;
+    flex-direction: column;
+}
+
 .topTask {
     display: flex;
     margin-top: 10px;
@@ -667,6 +677,22 @@ select {
     margin-bottom: 30px;
     border-radius: 5px;
     border: 1px solid green;
+}
+
+.taskListLiMed {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 1px solid yellow;
+}
+
+.taskListLiHigh {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 1px solid red;
 }
 
 .vert {
