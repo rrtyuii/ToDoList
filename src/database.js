@@ -132,18 +132,34 @@ const categoryController = (() => {
 
 
     //not done 
-    function EditCategory(name) {
+    function EditCategory(name, newName) {
         let ArrayOfCategories = getCategories();
         for (let i = 0; i < ArrayOfCategories.length; i++) {
             if (ArrayOfCategories[i].CategoryName == name) {
                 console.log(ArrayOfCategories[i]);
-                ArrayOfCategories[i].CategoryName = name;
+                ArrayOfCategories[i].CategoryName = newName;
                 localStorage.removeItem('Categories');
                 localStorage.setItem('Categories', JSON.stringify(ArrayOfCategories));
-                return true;
+
             }
 
         }
+
+        let arrayOfTasks = getTasks();
+        if (arrayOfTasks.length > 0) {
+            for (let i = 0; i < arrayOfTasks.length; i++) {
+                if (arrayOfTasks[i].CategoryName == name) {
+                    arrayOfTasks[i].CategoryName = newName;
+                    localStorage.removeItem('Tasks');
+                    localStorage.setItem('Tasks', JSON.stringify(arrayOfTasks));
+                }
+
+            }
+        }
+
+
+
+
 
     }
 

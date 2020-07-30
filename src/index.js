@@ -10,6 +10,7 @@ import { EventHandler } from './EventHandler'
 (function() {
     try {
         EventHandler.load();
+
         domManipulation.loadAllTask();
         EventHandler.menuButtonToggle();
         EventHandler.newCategoryButtonToggle();

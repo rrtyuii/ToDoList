@@ -149,6 +149,86 @@ const domManipulation = (() => {
         para.classList.add('categoryName');
         para.textContent = CategoryName;
 
+        let form = document.createElement('form');
+
+        form.classList.add('NewCategoryForm');
+
+        let input = document.createElement('input');
+
+        input.classList.add('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'Category-name');
+        input.setAttribute('placeHolder', 'Category Name');
+        input.setAttribute('required', 'required')
+
+        form.appendChild(input);
+
+        let div = document.createElement('div');
+        div.classList.add('addCategoryButtonContainer');
+
+        form.appendChild(div);
+
+        let button1 = document.createElement('button');
+
+        button1.classList.add('EditcategoryButton');
+        button1.setAttribute('type', 'reset');
+
+        button1.classList.add('save');
+
+        div.appendChild(button1);
+
+        let img1 = document.createElement('img');
+        img1.src = 'Images/add-24px.svg';
+        button1.appendChild(img1);
+
+
+
+        button1.addEventListener('click', function() {
+            if (input.value.length > 0) {
+                EventHandler.EditCategory(CategoryName, input.value);
+                CategoryName = input.value;
+                para.textContent = input.value;
+                let ul = document.querySelector('#taskList');
+                removeNode(ul);
+                loadAllTask();
+                form.classList.add('hidden');
+                para.classList.remove('hidden');
+                buttonContainer.classList.remove('hidden');
+
+            } else {
+                alert('please type in a proper name for the category');
+            }
+        })
+
+
+        let button2 = document.createElement('button');
+
+        button2.classList.add('cancelNewCategoryButton');
+        button2.setAttribute('type', 'reset');
+        button2.setAttribute('class', 'cancel');
+
+        button2.addEventListener('click', function() {
+            input.value = '';
+            form.classList.add('hidden');
+            para.classList.remove('hidden');
+            buttonContainer.classList.remove('hidden');
+
+
+        })
+
+
+        div.appendChild(button2);
+
+        let img2 = document.createElement('img');
+        img2.src = 'Images/x.svg';
+        button2.appendChild(img2);
+        li.appendChild(form);
+        form.classList.add('hidden');
+
+
+
+
+
         para.addEventListener('click', function() {
             ClickCategory(para, CategoryName);
 
@@ -157,6 +237,8 @@ const domManipulation = (() => {
             loadTask(CategoryName);
 
         })
+
+
 
         let buttonContainer = document.createElement('div');
         buttonContainer.classList.add('editDeleteContainer');
@@ -167,9 +249,12 @@ const domManipulation = (() => {
         EditButton.innerHTML = "<img src='Images/edit.svg'>"
         buttonContainer.appendChild(EditButton);
 
-
         EditButton.addEventListener('click', function() {
-            EventHandler.EditCategory(CategoryName)
+
+            form.classList.remove('hidden');
+            para.classList.add('hidden');
+            buttonContainer.classList.add('hidden');
+
 
 
         });

@@ -47,6 +47,29 @@ const EventHandler = (() => {
     }
 
 
+    function CheckIfInputsEmpty(input, button) {
+        if (input.value.length > 1) {
+
+            button.removeAttribute('disabled');
+        } else {
+
+            button.setAttribute("disabled", "disabled");
+
+        }
+    }
+
+
+
+
+    function EditCategory(oldCateName, NewcategoryName) {
+        categoryController.EditCategory(oldCateName, NewcategoryName);
+
+    }
+
+
+
+
+
 
     function removeCategory(name, node) {
         categoryController.DeleteCategory(name);
@@ -186,7 +209,7 @@ const EventHandler = (() => {
 
 
 
-    return { onCreateTask, onNewTaskClick, onCancelNewTask, menuButtonToggle, newCategoryButtonToggle, removeCategory, CreateCategory, handleSubmitForNewCategory, load, AllTaskClick }
+    return { EditCategory, CheckIfInputsEmpty, onCreateTask, onNewTaskClick, onCancelNewTask, menuButtonToggle, newCategoryButtonToggle, removeCategory, CreateCategory, handleSubmitForNewCategory, load, AllTaskClick }
 
 })();
 
