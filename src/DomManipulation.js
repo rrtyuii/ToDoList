@@ -313,7 +313,17 @@ const domManipulation = (() => {
         taskId = taskId[last].taskId;
 
         let li = document.createElement('li');
-        li.classList.add('taskListLi');
+        if (A.TaskPriority == '3') {
+            li.classList.add('taskListLi');
+
+        } else if (A.TaskPriority == '2') {
+            li.classList.add('taskListLiMed');
+
+        } else {
+            li.classList.add('taskListLiHigh');
+        }
+
+
         let div1 = document.createElement('div');
         div1.classList.add('topTask');
         li.appendChild(div1);
@@ -472,7 +482,18 @@ const domManipulation = (() => {
                     let ul = document.querySelector('#taskList');
 
                     let li = document.createElement('li');
-                    li.classList.add('taskListLi');
+
+                    if (arrayTask[i].priority == '3') {
+                        li.classList.add('taskListLi');
+
+                    } else if (arrayTask[i].priority == '2') {
+                        li.classList.add('taskListLiMed');
+
+                    } else {
+                        li.classList.add('taskListLiHigh');
+                    }
+
+
                     let div1 = document.createElement('div');
                     div1.classList.add('topTask');
                     li.appendChild(div1);
