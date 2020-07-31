@@ -5,6 +5,91 @@ const TaskFormController = (() => {
     let CategorySelect = document.querySelector('#CategorySelectForTask');
     let dateInput = document.querySelector('#dateForTask');
 
+    let EditCategorySelect = document.querySelector('#EditCategorySelectForTask');
+    let EditdateInput = document.querySelector('#EditdateForTask');
+
+
+    function EditloadCategoriesIntoSelect() {
+
+        let ArrayOfCategories = categoryController.getCategories();
+        if (ArrayOfCategories == null) {
+            ArrayOfCategories = [];
+        }
+        EditCategorySelect.options.add(new Option('All Task', "AllTask"));
+        var d = new Date();
+
+        var date = d.getDate();
+        var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
+        var year = d.getFullYear();
+
+        var dateStr = year + "-" + '0' + month + "-" + date;
+
+        EditdateInput.min = dateStr;
+        EditdateInput.value = dateStr;
+
+
+        for (let i = 0; i < ArrayOfCategories.length; i++) {
+
+            EditCategorySelect.options.add(new Option(ArrayOfCategories[i].CategoryName, ArrayOfCategories[i].CategoryName));
+
+
+
+
+        }
+    }
+
+
+
+    function EditunLoadCategoriesSelect() {
+        let ArrayOfCategories = categoryController.getCategories();
+        if (ArrayOfCategories == null) {
+            ArrayOfCategories = [];
+        }
+
+        EditCategorySelect.remove(0);
+        for (let i = 0; i < ArrayOfCategories.length; i++) {
+            EditCategorySelect.remove(0);
+        }
+    }
+
+
+
+
+    function EditgetAllTaskValues() {
+        let TaskName = document.querySelector('#EditTaskNameCreate').value;
+        let TaskDescription = document.querySelector('#EditTaskDescriptionCreate').value;
+        let TaskPriorityLevel = document.querySelector('#EditTaskPriorityDropDown').value;
+        let TaskCategory = document.querySelector('#EditCategorySelectForTask').value;
+        let TaskDueDate = document.querySelector('#EditdateForTask').value;
+
+        var a = {
+            TaskName: TaskName,
+            Description: TaskDescription,
+            TaskPriority: TaskPriorityLevel,
+            TaskCate: TaskCategory,
+            TaskDueDate: TaskDueDate
+
+        }
+
+        return a;
+
+    }
+
+
+
+    function EditresetTaskForm() {
+        document.querySelector('#EditTaskNameCreate').value = '';
+        document.querySelector('#EditTaskDescriptionCreate').value = '';
+        document.querySelector('#EditClassForm').classList.add('hidden');
+
+    }
+
+
+
+
+
+
+
     function loadCategoriesIntoSelect() {
 
         let ArrayOfCategories = categoryController.getCategories();
@@ -94,7 +179,7 @@ const TaskFormController = (() => {
 
 
 
-    return { resetTaskForm, loadCategoriesIntoSelect, unLoadCategoriesSelect, validateNewTaskForm, getAllTaskValues }
+    return { EditgetAllTaskValues, EditresetTaskForm, EditunLoadCategoriesSelect, EditloadCategoriesIntoSelect, resetTaskForm, loadCategoriesIntoSelect, unLoadCategoriesSelect, validateNewTaskForm, getAllTaskValues }
 
 })();
 

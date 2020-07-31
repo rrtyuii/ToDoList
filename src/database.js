@@ -146,7 +146,7 @@ const categoryController = (() => {
         }
 
         let arrayOfTasks = getTasks();
-        if (arrayOfTasks.length > 0) {
+        if (arrayOfTasks != null && arrayOfTasks.length > 0) {
             for (let i = 0; i < arrayOfTasks.length; i++) {
                 if (arrayOfTasks[i].CategoryName == name) {
                     arrayOfTasks[i].CategoryName = newName;

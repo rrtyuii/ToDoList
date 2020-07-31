@@ -1,6 +1,7 @@
 import { domManipulation } from './DomManipulation'
 import { categoryController } from './database'
 import { TaskFormController } from './FormController'
+import { taskMaker } from './CategoryClass';
 const EventHandler = (() => {
 
     let onClickAdded = false;
@@ -121,12 +122,14 @@ const EventHandler = (() => {
     }
 
 
+
+
+
     function onNewTaskClick() {
         let newTaskButton = document.querySelector('#newTaskButton');
         newTaskButton.addEventListener('click', function() {
             TaskFormController.loadCategoriesIntoSelect();
             domManipulation.unHideNewTaskForm();
-
             if (onClickAdded == false) {
                 onCreateTask()
             }
@@ -147,6 +150,40 @@ const EventHandler = (() => {
 
 
 
+    function EditonCancelNewTask(elem) {
+        console.log('works');
+        TaskFormController.EditunLoadCategoriesSelect();
+        domManipulation.EdithideNewTaskForm();
+        elem.removeEventListener('click', )
+
+
+    }
+
+    function onEditTask(taskId) {
+
+        let A = TaskFormController.EditgetAllTaskValues();
+        const arrayTask = categoryController.getTasks();
+
+        for (let i = 0; i < arrayTask.length; i++) {
+            if (arrayTask[i].taskId == taskId) {
+                let newTask = new taskMaker(A.TaskCate, A.TaskName, A.Description, A.TaskPriority, A.TaskDueDate, taskId, false);
+                arrayTask[i] = newTask;
+            }
+
+        }
+
+        categoryController.EditTask(arrayTask);
+        TaskFormController.EditresetTaskForm();
+        TaskFormController.EditunLoadCategoriesSelect();
+        document.querySelector('#overlay').classList.add('hidden');
+        let ul = document.querySelector('#taskList');
+        domManipulation.removeNode(ul);
+        domManipulation.loadAllTask();
+    }
+
+
+
+
 
     function handleSubmitForNewTask() {
 
@@ -154,6 +191,7 @@ const EventHandler = (() => {
             CheckIfTaskInputEmpty();
         });
     }
+
 
     function CheckIfTaskInputEmpty() {
         if (document.querySelector('#TaskNameCreate').value.length > 1) {
@@ -166,15 +204,6 @@ const EventHandler = (() => {
         }
     }
 
-    // function removeAll() {
-    //     document.querySelector('#REMOVEALL').addEventListener('click', function() {
-
-    //         let testnode = document.querySelector('#taskList');
-    //         domManipulation.removeNode(testnode);
-
-    //     })
-
-    // }
 
 
 
@@ -191,7 +220,7 @@ const EventHandler = (() => {
 
                 categoryController.CreateTask(A.TaskName, A.TaskCate, A.TaskDueDate, A.Description, A.TaskPriority, false);
                 domManipulation.CreateNewTask();
-
+                document.querySelector('#overlay').classList.add('hidden');
 
                 TaskFormController.resetTaskForm();
                 TaskFormController.unLoadCategoriesSelect();
@@ -209,7 +238,7 @@ const EventHandler = (() => {
 
 
 
-    return { EditCategory, CheckIfInputsEmpty, onCreateTask, onNewTaskClick, onCancelNewTask, menuButtonToggle, newCategoryButtonToggle, removeCategory, CreateCategory, handleSubmitForNewCategory, load, AllTaskClick }
+    return { onEditTask, EditonCancelNewTask, EditCategory, CheckIfInputsEmpty, onCreateTask, onNewTaskClick, onCancelNewTask, menuButtonToggle, newCategoryButtonToggle, removeCategory, CreateCategory, handleSubmitForNewCategory, load, AllTaskClick }
 
 })();
 

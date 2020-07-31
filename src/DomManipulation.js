@@ -17,15 +17,28 @@ const domManipulation = (() => {
     let newTaskButton = document.querySelector("#newTaskButton");
     let categoryFormBox = document.querySelector("#newCategoryInput");
     let newTaskForm = document.querySelector('#newClassForm');
+    let editTaskForm = document.querySelector('#EditClassForm');
+
+    function EditunHideNewTaskForm() {
+        editTaskForm.classList.remove('hidden');
+        document.querySelector('#overlay').classList.remove('hidden');
+    }
+
+    function EdithideNewTaskForm() {
+        editTaskForm.classList.add('hidden');
+        document.querySelector('#overlay').classList.add('hidden');
+    }
 
 
 
     function unHideNewTaskForm() {
         newTaskForm.classList.remove('hidden');
+        document.querySelector('#overlay').classList.remove('hidden');
     }
 
     function hideNewTaskForm() {
         newTaskForm.classList.add('hidden');
+        document.querySelector('#overlay').classList.add('hidden');
     }
 
 
@@ -475,7 +488,7 @@ const domManipulation = (() => {
     function loadAllTask() {
 
         const arrayTask = categoryController.getTasks();
-        if (arrayTask.length != 0) {
+        if (arrayTask != null && arrayTask.length != 0) {
             for (let i = 0; i < arrayTask.length; i++) {
                 if (arrayTask[i].completed == false) {
                     let taskId = arrayTask[i].taskId;
@@ -605,6 +618,23 @@ const domManipulation = (() => {
 
                     //edit
                     button2.addEventListener('click', function() {
+                        console.log('works');
+                        TaskFormController.EditloadCategoriesIntoSelect();
+                        EditunHideNewTaskForm();
+                        let cancelButton = document.querySelector('#EditCancelCreateTask');
+
+                        let confirmEditTaskButton = document.querySelector('#EditCreateTaskButton');
+
+                        confirmEditTaskButton.addEventListener('click', function() {
+                            EventHandler.onEditTask(taskId);
+
+                        }, { once: true });
+
+
+
+
+                        cancelButton.addEventListener('click', function() { EventHandler.EditonCancelNewTask(confirmEditTaskButton) }, { once: true });
+
 
 
                     })
@@ -618,7 +648,7 @@ const domManipulation = (() => {
 
                     button3.innerHTML = `Delete Task`;
                     div12.appendChild(button3);
-                    button2.addEventListener('click', function() {
+                    button3.addEventListener('click', function() {
 
 
                     })
@@ -630,13 +660,11 @@ const domManipulation = (() => {
             }
 
         }
-
-
-
-
-
-
     }
+
+
+
+
 
 
 
@@ -828,7 +856,7 @@ const domManipulation = (() => {
 
 
 
-    return { removeNode, loadAllTask, CreateNewTask, unHideNewTaskForm, hideNewTaskForm, ClickCategory, toggleMenu, menu, menuButton, removeNode, addMenuItems, toggleCategoryForm, CategoryFormButton, cancelNewCategoryButton, DeleteCategory, updateNewCategory, addCategorybutton, categoryFormBox }
+    return { EdithideNewTaskForm, removeNode, loadAllTask, CreateNewTask, unHideNewTaskForm, hideNewTaskForm, ClickCategory, toggleMenu, menu, menuButton, removeNode, addMenuItems, toggleCategoryForm, CategoryFormButton, cancelNewCategoryButton, DeleteCategory, updateNewCategory, addCategorybutton, categoryFormBox }
 
 })();
 
